@@ -5,9 +5,11 @@ namespace App\Livewire;
 use App\Models\Todo;
 use Livewire\Attributes\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class TodoList extends Component
 {
+    use WithPagination;
     #[Rule('required|min:3|string')]
     public string $name;
     #[Rule('min:2|string')]
@@ -24,7 +26,8 @@ class TodoList extends Component
         $validated = $this->validateOnly('name');
         Todo::create($validated);
         $this->reset('name');
-       session()->flash('success', 'Saved');
+        session()->flash('success', 'Saved');
+        $this->resetPage();
     }
 
     public function update(Todo $todo)
