@@ -14,12 +14,9 @@ class TodoList extends Component
     public string $name;
     #[Rule('min:2|string')]
     public string $search = '';
-
     public int $editingTodoID;
-
     #[Rule('required|string|min:3')]
     public string $todoName;
-
 
     public function add()
     {
@@ -29,7 +26,6 @@ class TodoList extends Component
         session()->flash('success', 'Saved');
         $this->resetPage();
     }
-
     public function update(Todo $todo)
     {
         $this->validateOnly('todoName');
@@ -37,24 +33,20 @@ class TodoList extends Component
         $todo->update();
         $this->cancel();
     }
-
     public function delete(Todo $todo)
     {
        $todo->delete();
     }
-
     public function toggle(Todo $todo)
     {
         $todo->completed = !$todo->completed;
         $todo->save();
     }
-
     public function edit(Todo $todo)
     {
         $this->editingTodoID = $todo->id;
         $this->todoName = $todo->name;
     }
-
     public function cancel()
     {
         $this->reset('editingTodoID', 'todoName');
