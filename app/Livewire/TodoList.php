@@ -11,7 +11,7 @@ class TodoList extends Component
     #[Rule('required|min:3|string')]
     public string $name;
 
-    public string $search;
+    public string $search = '';
 
     public function add()
     {
@@ -21,9 +21,9 @@ class TodoList extends Component
        session()->flash('success', 'Saved');
 
     }
-    
     public function render()
     {
-        return view('livewire.todo-list', ['todos' => Todo::paginate(5)]);
+        session()->flash('fail', 'Error');
+        return view('livewire.todo-list', ['todos' => Todo::latest()->where('name', 'LIKE', "%{$this->search}%")->paginate(5)]);
     }
 }
