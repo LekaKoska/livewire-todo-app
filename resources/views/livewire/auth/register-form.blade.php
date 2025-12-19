@@ -66,7 +66,10 @@
                 @endif
 
                 <div wire:loading wire:target="image">
-                    <span>Uploading..</span>
+                    <span class="text-green-500">Uploading..</span>
+                </div>
+                <div wire:loading>
+                    <span class="text-teal-500">Sending..</span>
                 </div>
             </div>
 
