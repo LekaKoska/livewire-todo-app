@@ -9,4 +9,3 @@ Route::get('/', function () {
 Route::get('/todo', fn() => view('welcome'));
 
 Route::get('/register', fn() => view('register'))->name('register');
-Route::get('test', fn() => view('welcome'));
