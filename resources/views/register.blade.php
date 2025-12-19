@@ -7,9 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     @livewireScripts
 </head>
-<body>
-        <livewire:register-form/>
-
+<body class="antialiased">
+    <div class="flex">
+        <div class="w-2/4">
+                <livewire:register-form/>
+        </div>
+        <div class="w-2/4">
+                <livewire:users-list/>
+        </div>
+        
+    </div>
+       
 @livewireStyles
 </body>
 </html>
